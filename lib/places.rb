@@ -15,8 +15,14 @@ class Place
         make_request_and_parse_response(search_text)
     end
 
-    def self.make_request_and_parse_response(search_text)
-        url = "https://api.mapbox.com/geocoding/v5/mapbox.places/#{search_text}.json?access_token=#{Token}"
+    def self.get_place_details(id)
+        make_request_and_parse_response(id)
+    end
+
+    private
+    
+    def self.make_request_and_parse_response(search_parameter)
+        url = "https://api.mapbox.com/geocoding/v5/mapbox.places/#{search_parameter}.json?access_token=#{Token}"
         uri = URI.parse(url)
 
         response = Net::HTTP.get_response(uri)

@@ -36,3 +36,16 @@ RSpec.describe Place, "#list_places_with_search_text" do
         end
     end
 end
+
+RSpec.describe Place, "#get_place_details" do
+    it "fetches the details of a place given an id" do
+        # Arrange
+
+        # Act
+        place = Place.get_place_details("place.24496142")
+
+        # Assert
+        expect(place.length).to eq 1
+        expect(place[0].name).to eq "Sydney"
+    end
+end
