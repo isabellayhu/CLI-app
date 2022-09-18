@@ -54,3 +54,18 @@ RSpec.describe Place, "#initialize" do
         expect(sydney.place_name).to eq "Sydney, New South Wales, Australia"
     end
 end
+
+RSpec.describe Place, "#list_places_with_search_text" do
+    it "fetches a list of places with search text" do
+        # Arrange
+
+        # Act
+        places = Place.list_places_with_search_text("sydney")
+
+        # Assert
+        expect(places.length).to be > 0
+        places.each do |place|
+            expect(place).to be_a_kind_of Place
+        end
+    end
+end

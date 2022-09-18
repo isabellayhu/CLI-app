@@ -5,4 +5,8 @@ class Place
             self.send(("#{key}="), value)
         end
     end
+
+    def self.list_places_with_search_text(text)
+        ["sydney"]
+    end
 end
