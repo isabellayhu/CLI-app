@@ -1,4 +1,4 @@
-require_relative "./spec_helper"
+require_relative './spec_helper'
 
 RSpec.describe Place, "#initialize" do
     it "initializes a new object of the Place class with the given attributes" do
