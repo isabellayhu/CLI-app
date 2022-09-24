@@ -4,23 +4,39 @@ puts "Welcome to Coordinates Finder!"
 puts "=============================="
 puts
 
-print "Please enter a name or address to see all the places under that search: "
-search_text = gets.chomp
-puts
+loop do
+    puts "Press / to exit"
+    print "Please enter a name or address to see all the places under that search: "
+    search_text = gets.chomp
+    puts
+    if search_text == "/"
+        exit
+    end
 
-puts "Here are all the places found with #{search_text} - "
-place_collection = Mapbox.search(search_text)
-place_collection.print
+    puts "Here are all the places found with #{search_text} - "
+    place_collection = Mapbox.search(search_text)
+    place_collection.print
 
-print "Enter an id to get coordinates of a place: "
-place_id = gets.chomp
-puts
+    loop do
+        puts "Press / to exit"
+        puts "Press < to go back"
+        print "Enter an id to get coordinates of a place: "
+        place_id = gets.chomp
+        puts
+        if place_id == "/"
+            exit
+        elsif place_id == "<"
+            break
+        end
 
-place = place_collection.find(place_id)
+        place = place_collection.find(place_id)
 
-if place
-    puts "Place Name - #{place.name}"
-    puts "Place Coordinates - #{place.geocoding}"
-else
-    puts "Place ID not found!"
+        if place
+            puts "Place Name - #{place.name}"
+            puts "Place Coordinates - #{place.geocoding}"
+        else
+            puts "Place ID not found!"
+        end
+        puts
+    end
 end
