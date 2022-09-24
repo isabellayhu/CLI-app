@@ -9,16 +9,18 @@ search_text = gets.chomp
 puts
 
 puts "Here are all the places found with #{search_text} - "
-Place.list_places_with_search_text(search_text).each do |place|
-    puts "Place Name - #{place.name}"
-    puts "Place ID - #{place.id}"
-    puts
-end
+place_collection = Mapbox.search(search_text)
+place_collection.print
 
 print "Enter an id to get coordinates of a place: "
 place_id = gets.chomp
 puts
 
-place_details = Place.get_place_details(place_id)[0]
-puts "Place Name - #{place_details.name}"
-puts "Place Coordinates - #{place_details.geocoding}"
+place = place_collection.find(place_id)
+
+if place
+    puts "Place Name - #{place.name}"
+    puts "Place Coordinates - #{place.geocoding}"
+else
+    puts "Place ID not found!"
+end
