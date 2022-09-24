@@ -7,6 +7,7 @@ Start the APP by executing the bin.
     % ruby bin/places
 
 APP will execute and gree the user.
+    
     Welcome to Coordinates Finder!
     ==============================
 
